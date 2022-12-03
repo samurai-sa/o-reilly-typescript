@@ -17,6 +17,8 @@
 
 値と、それを使ってできる事柄の集まり
 
+たとえば、+ を使って2つの数値を足したり、`.toUpperCase` を使って文字列を大文字にしたりすることができる。
+
 ### リテラル型（Literal Type）
 
 ただ、ひとつの値を表し、それ以外の値は受け入れない型
@@ -62,3 +64,64 @@ let a: {
 1. 空のオブジェクトリテラル表記 `{}` はできるだけ避ける。
 1. object 型。これは、単にオブジェクトが必要でそれがどのようなフィールドを持つかは重視しない場合に使う。
 1. Object 型。これは、できるだけ避ける。 `{}` と同じ
+
+### 型エイリアス
+
+変数宣言を使って、値の別名（エイリアス）となる変数を宣言できるのと同様にある型を指し示す `型エイリアス` を宣言することができる。
+
+```ts
+type Person {
+  name: string
+  age: number
+}
+```
+
+### 合併型と交差型
+
+```ts
+type Cat = {name: string, purrs: boolean}
+type Dog = {name: string, purrs: boolean, wags: boolean}
+type CatOrDogOrBoth = Cat | Dog // 合併型 union
+type CatAndDog = Cat & Dog // 交差型 intersection
+```
+
+### 配列
+
+宣言方法は以下の表記。
+
+```ts
+T[]
+Array<T>
+```
+
+### タプル
+
+配列のサブタイプ。
+
+```ts
+// 固定長
+let a: [number] = [1];
+let b: [string, string, number] = ['abc', 'def', 1];
+
+// 可変長
+let friends: [string, ...string[]] = ['sara', 'Tali', 'Chloe'];
+
+// 読み取り専用
+// イミュータブルな配列操作ができる
+let as: readonly number[] = [1, 2, 3];
+```
+
+### null, undefined, void, never
+
+- null
+  - 値の欠如
+- undefined
+  - 値がまだ定義されていない変数
+- void
+  - 明示的に何も返さない関数の戻り値
+- never
+  - 決して戻ることのない関数の型
+
+tips: 古いバージョンの TypeScript ではすべての方で null を許容していた。
+
+すべての変数で null かどうかチェックしないといけなかった。
