@@ -125,3 +125,30 @@ let as: readonly number[] = [1, 2, 3];
 tips: 古いバージョンの TypeScript ではすべての方で null を許容していた。
 
 すべての変数で null かどうかチェックしないといけなかった。
+
+## 4章
+
+### 呼び出しシグネチャ
+
+```ts
+// 呼び出しシグネチャの省略記法
+type Log = (message: string, userId?: string) => void
+
+// 完全な呼び出しシグネチャ
+type Log = {
+  (message: string, userId?: string): void
+}
+
+let log: Log = (message, userId = 'Not signed in') => {
+  let time = new Date().toISOString();
+  console.log(time, message, userId)
+}
+```
+
+### オーバーロードされた関数
+
+複数の呼び出しシグネチャを持つ関数
+
+### 型駆動開発 - type-driven development
+
+まず型シグネチャで概略を記述し、その後で値を埋め込むプログラミングのスタイル
