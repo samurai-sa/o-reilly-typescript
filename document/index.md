@@ -149,6 +149,18 @@ let log: Log = (message, userId = 'Not signed in') => {
 
 複数の呼び出しシグネチャを持つ関数
 
+### ジェネクッリク型パラメーター
+
+複数の場所で型レベルの制約を強制するために使われるプレースホルダーの型。
+多層型パラメーターとも呼ばれる。
+
+```ts
+type Filter = {
+  <T>(array: T[], f: (item: T) => boolean): T[];
+}
+```
+
 ### 型駆動開発 - type-driven development
 
 まず型シグネチャで概略を記述し、その後で値を埋め込むプログラミングのスタイル
+

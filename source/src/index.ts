@@ -2,6 +2,22 @@
 // 4 章
 // ====
 
+function map<T, U>(array: T[], f: (item: T) => U): U[] {
+  let result = [];
+  for (let i = 0; i < array.length; i++) {
+    result[i] = f(array[i]);
+  }
+  console.log(result);
+  return result;
+}
+
+const arr = [1, 2, 3];
+map(arr, v => v === 2 );
+map <string, boolean>(
+  ['a', 'b', 'c'],
+  v => v === 'b'
+)
+
 // 関数の呼び出し
 function add(a: number, b: number) {
   const sum = a + b;
