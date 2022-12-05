@@ -158,6 +158,13 @@ let log: Log = (message, userId = 'Not signed in') => {
 type Filter = {
   <T>(array: T[], f: (item: T) => boolean): T[];
 }
+
+type Filter = {
+  <T>(array: T[], value: T): T
+  <U>(array: U[], value: U): U
+}
+
+type Filter<T> = (array: T[], value: T) => T
 ```
 
 ### 型駆動開発 - type-driven development

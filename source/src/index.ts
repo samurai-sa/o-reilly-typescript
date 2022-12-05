@@ -1,22 +1,32 @@
 // ====
 // 4 章
 // ====
+type Reduce<T> = {
+  (array: T[], initialValue: T): T
+}
 
+const genericStringReduce: Reduce<string> = (array, initialValue) => {
+  let result = initialValue;
+  for (let i=0; i < array.length; i++) {
+    result += array[i];
+  }
+  return result;
+};
+
+console.log(genericStringReduce(["1", "2", "3"], "ジェネリック: "));
+
+// ジェネリック
 function map<T, U>(array: T[], f: (item: T) => U): U[] {
   let result = [];
   for (let i = 0; i < array.length; i++) {
     result[i] = f(array[i]);
   }
-  console.log(result);
   return result;
 }
 
 const arr = [1, 2, 3];
-map(arr, v => v === 2 );
-map <string, boolean>(
-  ['a', 'b', 'c'],
-  v => v === 'b'
-)
+console.log(map(arr, v => v === 2 ));
+console.log(map <string, boolean>(['a', 'b', 'c'], v => v === 'b'));
 
 // 関数の呼び出し
 function add(a: number, b: number) {
@@ -69,7 +79,7 @@ let a: {
   [key: number]: boolean
 }
 
-a = {b: 1, c: undefined}
-a = {b: 1, c: 'd'}
-a = {b: 1, 10: true}
-a = {b: 1, 10: true, 20: false, 30: true}
+a = { b: 1, c: undefined }
+a = { b: 1, c: 'd' }
+a = { b: 1, 10: true }
+a = { b: 1, 10: true, 20: false, 30: true }
